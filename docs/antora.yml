@@ -1,0 +1,5 @@
+name: docs
+title: Kinetic User Guide and Contribution Guidelines
+version: 'latest'
+nav:
+  - modules/ROOT/nav.adoc

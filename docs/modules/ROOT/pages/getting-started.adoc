@@ -1,0 +1,85 @@
+= Getting Started
+
+If you have never logged in to the https://git.cybbh.space[Cyber School Gitlab] or used a named account on the VTA,
+you probably need to register for an account.
+Anyone who is a 17-series service member is eligible for an account and will automatically be approved.
+Other requests are handled on a case-by-case basis.
+
+By registering for an account, you get:
+
+* Permanent access to the USACYS Gitlab as an external user (you must explicitly request access to projects that you wish to contribute to)
+* Permanent access to your own VTA project with:
+** 20 Cores
+** 10 Instances
+** 50G RAM
+** 1TB block and object storage
+* The ability to log in to any USACYS workstation using these same credentials.
+
+For more information on maximizing the impact of your VTA account,
+see xref:vta:root:contributing.adoc[the VTA component of this guide]
+
+[#registration]
+== Registration
+
+To register for an account,
+head to https://register.cybbh.space.
+
+You will be prompted to present a client certificate and key - use your common access card email certificate.
+If you choose your non-email certificate,
+the system will be unable to determine your email address and throw an error asking you to clear your TLS cache and try again.
+
+Once you choose the correct certificate and enter your PIN,
+you will be presented with an acceptable use policy outlining the usage agreement for the information system.
+Read the AUP,
+ensure that the fields that populated at the bottom of the screen have your accurate information,
+and then click on _Create Account_.
+
+TIP: If you happen to forget your password,
+you can also use this same page to reset it,
+just click on _Reset Password_.
+
+If all goes well,
+once you click on create account,
+a job will run in the background that provisions your account automatically and displays a temporary password that you can use to login,
+along with further instructions.
+Follow the displayed message in order to successfully log on to the version control system.
+
+WARNING: There is a bug in the password display portion of the initialization function.
+If the randomly-chosen system password happens to have `\n` or other similar line-break syntax in it,
+The output of the initialization script will be incorrect.
+The various lines of output will run together,
+and your password will appear to contain what should be the following line.
+If this happens, hit the _Reset Password_ button until a new password is generated and properly displayed.
+
+[#logging-in]
+== Logging in
+
+Once you have set a new password on the IPA system,
+you will be able to log in across the various services.
+
+To log in to gitlab, head https://git.cybbh.space[here].
+
+Once you're at the landing page,
+log in with the username and password that you were just issued.
+Your username is your EEmail address minus your status identifier and domain (e.g. if your email address is john.q.smith23.mil@mail.mil, your login is john.q.smith23)
+Once logged in, you can feel free to browse the https://git.cybbh.space/explore/projects[available projects].
+If you find something that you wish to contribute to,
+please read the project-specific contribution guidance in the drawer on the lower left as well as the general contribution guidelines and the style guide.
+
+To log in to the VTA, head https://vta.cybbh.space[here].
+
+Your domain will be ipa, and your username/password will be the same as you used for gitlab.
+There might be a slight delay between account registration and VTA activation,
+so if you receive a message about not being assigned to any projects,
+come back in a few hours and try again.
+If you still have issues,
+head to the https://vta-hq.slack.com[VTA Slack] and ask for help.
+
+At this point, you should be able to log in to all of the various systems.
+You should read the xref:general-guidelines.adoc[General Guidelines] next.
+
+
+
+
+
+

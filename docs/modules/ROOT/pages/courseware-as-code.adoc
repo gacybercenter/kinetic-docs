@@ -1,0 +1,119 @@
+# What is Courseware as Code?
+
+Courseware as code is a method of maintaining educational materials using the same techniques and tools that developers do when writing software,
+specifically when using the https://www.agilealliance.org/agile101/[agile] development strategy.
+In short,
+its an attempt to fundamentally change the way that educational materials are developed,
+maintained,
+and shared with the designated recipients.
+
+We recently wrote and presented a WIP that was accepted at the 2018 Frontiers in Education conference.
+You can read the final version of the paper link:{attachmentsdir}/coursewareascode.pdf[here].
+
+## Why it matters
+
+You're probably familiar with the traditional way that courses are taught,
+at least in the armed forces.
+There are powerpoint slides,
+PDF handouts,
+videos,
+ebooks,
+word documents,
+blackboard projects,
+etc.
+All of these items are considered https://betterexplained.com/articles/a-little-diddy-about-binary-file-formats/[binary file formats],
+which essentially mean that they are very difficult for humans to read and edit without specialized software (Microsoft Word, Adobe Acrobat, etc.).
+
+There is certainly a place for these kinds of files;
+they are best suited for materials that don't change very often and where ease of distribution trumps flexibility.
+Cyberspace Operations and most other high-tech fields change *constantly*.
+Maintaining a fleet of individualized word documents,
+powerpoint slides,
+student handouts,
+and more across multiple schedules,
+physical locations,
+courses,
+and instructors,
+quickly becomes untenable.
+
+We experimented with things like Google Docs and collaborative editing,
+but found them to be lacking for one reason or another,
+usually due to difficulties when attempting templatization or re-using assets where applicable.
+This kind of collaborative editing software just wasn't flexibile enough for our use case.
+
+## Plain text is best
+
+The other type of format is called a plain text file.
+It is exactly what it sounds like - plain characters stored in an encoded (e.g. UTF-8) text file that is completely devoid of content that can't be represented by the chosen encoding.
+They can be read an edited by humans using any available text editor and almost all shells on modern operating systems without the assistance of special software.
+
+By treating all of our content as plain text,
+we can leverage the modern developer toolchain to create and maintain all of our courseware in the rapid and distributed manner that this field demands.
+
+## How we do it
+
+While the simplicity and elegance of having everything stored as text is evident,
+there are situations where some kind of markup is required.
+Drawing attention to a key point in a handout,
+providing some kind of syntax highlighting for any source code,
+embedding images,
+and other similar actions are desirable in the classroom in many cases.
+
+If everything is stored as plain text,
+how do you represent these various necessities?
+
+Enter https://web.stanford.edu/~ouster/CS349W/lectures/markup.html[markup languages].
+
+## Asciidoc
+
+A markup language is a way of representing non-text objects with text.
+We sort of do this naturally already in our daily lives.
+If you were writing a text message and wanted to emphasize a word or phrase,
+you might surround it with '*',
+or use an exclamation point,
+or any other number of methods in an attempt to convey meaning beyond what the text explicitly states.
+
+A markup language takes this concept and applies it as widely as possible.
+Here is an example:
+
+[source, asciidoc]
+----
+Lorem ipsum dolor sit amet, *consectetur adipiscing elit*, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+* Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+* Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+WARNING: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+----
+
+Lorem ipsum dolor sit amet, *consectetur adipiscing elit*, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+* Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+* Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+WARNING: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+What you see above is the same exact plain text,
+but represented in two different ways.
+
+The first example is contained within source code blocks,
+which means that it is to be interpreted literally and printed to the screen exactly as written without any processing.
+You can see the various '*' characters and WARNING admonition present,
+but unrendered
+
+The second example is the same exact text without being bounded by the source code blocks.
+Instead of writing literal '\*' characters and 'WARNING:',
+the system has rendered them in human-consumable format,
+namely by bolding text that is bounded by '*',
+creating a bulleted list when lines are prefixed by '*',
+and creating a warning callout when a line is preceeded by 'WARNING:'
+
+By allowing computers to interpret our markup language and automatically turn it into something visually pleasing on our behalf,
+we can focus on writing the content itself using a version control system.
+
+USACYS has chosen the gitlab implementation of the git protocol as our version control system along with the asciidoc markup language.
+Other common choices in these categories could have included github,
+markdown,
+svn,
+RST,
+and others.

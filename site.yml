@@ -1,0 +1,7 @@
+site:
+  title: Georgia Cyber Center Kinetic Documentation and Contribution Guide
+content:
+  sources:
+  - url: https://github.com/GeorgiaCyber/kinetic-doc.git
+    branches: master
+    start_path: docs
