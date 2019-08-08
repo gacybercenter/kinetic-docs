@@ -1,11 +1,11 @@
-# Georgia Cyber Range Contibution and User Guide
+= Welcome to the Georgia Cyber Range Documentation
 
 This site is designed to provide usage and contribution guidelines to users of the Georgia Cyber Range,
 an implementation of the https://github.com/GeorgiaCyber/kinetic[kinetic] framework.
 
 All content on this site is licensed with the Apache 2.0 license where possible and derivative works respect the upstream license requirements where necessary.
 
-## Guide Overview
+== Guide Overview
 
 After reading this documentation,
 you will be able to:
@@ -18,7 +18,7 @@ in order to address any potential IP or security concerns when using the hardwar
 * [x] Learn how to read and write https://docs.openstack.org/heat/latest/template_guide/[heat templates] and https://docs.openstack.org/murano/latest/user/quickstart/quickstart.html[murano packages] for use on the Georgia Cyber Range
 * [x] Learn how to earn complimentary compute time for worthy projects that could further the cause of cybersecurity for the general public
 
-## How to use this guide
+== How to use this guide
 
 This documentation site was built with https://antora.org/[antora] and takes a modular,
 decentralized approach to documentation creation and maintenance.
@@ -26,10 +26,10 @@ decentralized approach to documentation creation and maintenance.
 Be sure to read the general contribution guidelines before attempting to make a contribution.
 This will ensure that your request/changeset is reviewd and acted on as quickly as possible.
 
-## Where to start
+== Where to start
 
 If you're looking to use the range/learn more about it,
 go ahead and look at xref:getting-started.adoc[getting started].
 
-If you're looking to make a contribution,
+If you're looking to make a contribution or have a problem you need help with,
 you can go ahead and skip to the xref:contributing.adoc[contributing] section.
