@@ -28,9 +28,8 @@ This will ensure that your request/changeset is reviewd and acted on as quickly 
 
 ## Where to start
 
-If you're looking to make a contribution,
-you can go ahead and skip to the xref:general-guidelines.adoc[general guidelines] themselves.
-
 If you're looking to use the range/learn more about it,
 go ahead and look at xref:getting-started.adoc[getting started].
 
+If you're looking to make a contribution,
+you can go ahead and skip to the xref:general-guidelines.adoc[general guidelines] themselves.
