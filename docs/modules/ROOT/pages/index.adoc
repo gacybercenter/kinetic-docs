@@ -1,55 +1,36 @@
-# United States Army Cyber School Contribution Guidelines
+# Georgia Cyber Range Contibution and User Guide
 
-This site is designed to outline the processes by which members of the Army component of the Cyber Mission Force may
-(at the individual level)
-open issues against,
-suggest changes to (via the https://guides.github.com/introduction/flow/[github flow]),
-and otherwise contribute to the unclassified and public official courseware and environment templates of the United States Army Cyber School.
+This site is designed to provide usage and contribution guidelines to users of the Georgia Cyber Range,
+an implementation of the https://github.com/GeorgiaCyber/kinetic[kinetic] framework.
 
-*Please note that all content contained on the public version control system at https://git.cybbh.space is unclassified with no handling caveats.
-Suggestions about changes to courses that contain classified materials or unclassified materials with handling caveats should be handled on the appropriate network.*
-
-As a general rule, if you are looking to implement a change or suggestion that a reasonable person would consider to be 'military specific' and generally would not be applicable to the private sector,
-it probably does not belong on this forum.  Consult your SSO/S2 as appropriate if you are unsure.
-
-This information system is accredited to handle information that is considered 'for public release'.
-All projects are licensed with the Apache 2.0 license where possible and derivative works respect the upstream license requirements where necessary.
-
-While we can only accept input from members of the CMF,
-any person or organization is free to use any/all publicly available materials on this documentation site and on the version control system in accordance with the provided license(s).
+All content on this site is licensed with the Apache 2.0 license where possible and derivative works respect the upstream license requirements where necessary.
 
 ## Guide Overview
 
 After reading this documentation,
 you will be able to:
 
-* [x] Understand how United States Army Cyber School (USACYS) courses are structured,
-and why
-* [x] Learn how to suggest a new feature or bugfix in a course
-* [x] Learn how to fork official courseware and build your own courses to address gaps identified in your organizations,
-and then share them with the rest of the community
-* [x] Learn how to read and write heat templates and murano packages for use on the VTA
-* [x] Find other novel ways to apply modern software development practices and toolchains to traditionally low-tech problems
+* [x] Understand how the Georgia Cyber Range is different from other cyber ranges
+* [x] Learn how to suggest a new feature or report a bug in the Georgia cyber range (and how to write the fix yourself,
+ if desired)
+* [x] Learn how to fork the kinetic framework and build your own cyber range on your own hardware,
+in order to address any potential IP or security concerns when using the hardware of a third party
+* [x] Learn how to read and write heat templates and murano packages for use on the Georgia Cyber Range
+* [x] Learn how to earn complimentary compute time for worthy projects that could further the cause of cybersecurity for the general public
 
 ## How to use this guide
 
 This documentation site was built with https://antora.org/[antora] and takes a modular,
 decentralized approach to documentation creation and maintenance.
 
-The repository that holds the general contribution guidelines (what you are reading right now) are maintain in a namespace that is separate from the actual courses and only contains general guidance that will apply to any contributions that you wish to make to the Cyber School.
-On the bottom left of this page,
-you will notice a navigation drawer that has several different course-specific guides listed.
-Those are maintained by the actual instructors,
-content developers,
-and course managers for a given course.
-
-Be sure to read the course-specific guidelines in addition to the general guidelines before attempting to make a contribution.
+Be sure to read the general contribution guidelines before attempting to make a contribution.
 This will ensure that your request/changeset is reviewd and acted on as quickly as possible.
 
 ## Where to start
 
-If this is your first time using a version control system (for anything, not just courseware), you should probably start with xref:courseware-as-code.adoc[Courseware as Code].
+If you're looking to make a contribution,
+you can go ahead and skip to the xref:general-guidelines.adoc[general guidelines] themselves.
 
-If this isn't your first rodeo, you can go ahead and skip to the xref:general-guidelines.adoc[general guidelines] themselves.
-If you need an account (or had one previously but forgot the password),
-head over to xref:getting-started.adoc[getting started].
+If you're looking to use the range/learn more about it,
+go ahead and look at xref:getting-started.adoc[getting started].
+
