@@ -157,6 +157,14 @@ commit them to the feature branch,
 and execute the above commands again to ensure your changes are always on top of an up-to-date master branch.
 Rinse and repeat as many times as necessary.
 
+[#bugs-and-features]
+== Bugs and Features
+
+When reporting bugs or requesting features,
+please be sure to use the issue templates on https://github.com/GeorgiaCyber/kinetic/[GitHub]!
+
+They will help you properly format your request and ensure that the developers can fully understand what you're asking for/need help with.
+
 [#asciidoc]
 == Asciidoc
 

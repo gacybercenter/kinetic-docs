@@ -12,6 +12,7 @@
 ** xref:contributing.adoc#submitting-issues[Submitting Issues]
 ** xref:contributing.adoc#professional-git-usage[Professional Git Usage]
 ** xref:contributing.adoc#your-first-contribution[Your First Contribution]
+** xref:contributing.adoc#bugs-and-features[Bugs and Features]
 ** xref:contributing.adoc#asciidoc[Asciidoc]
 ** xref:contributing.adoc#workflow[Workflow]
 ** xref:contributing.adoc#sentences[Sentences]
