@@ -10,12 +10,12 @@ All content on this site is licensed with the Apache 2.0 license where possible 
 After reading this documentation,
 you will be able to:
 
-* [x] Understand how the Georgia Cyber Range is different from other cyber ranges
-* [x] Learn how to suggest a new feature or report a bug in the Georgia cyber range (and how to write the fix yourself,
+* [x] Understand how the xref:what-is-the-georgia-cyber-range.adoc[Georgia Cyber Range] is different from other cyber ranges
+* [x] Learn how to suggest a xref:contributing.adoc[new feature or report a bug] in the Georgia cyber range (and how to write the fix yourself,
  if desired)
-* [x] Learn how to fork the kinetic framework and build your own cyber range on your own hardware,
+* [x] Learn how to fork the https://github.com/GeorgiaCyber/kinetic[kinetic framework] and build your own cyber range on your own hardware,
 in order to address any potential IP or security concerns when using the hardware of a third party
-* [x] Learn how to read and write heat templates and murano packages for use on the Georgia Cyber Range
+* [x] Learn how to read and write https://docs.openstack.org/heat/latest/template_guide/[heat templates] and https://docs.openstack.org/murano/latest/user/quickstart/quickstart.html[murano packages] for use on the Georgia Cyber Range
 * [x] Learn how to earn complimentary compute time for worthy projects that could further the cause of cybersecurity for the general public
 
 ## How to use this guide
@@ -32,4 +32,4 @@ If you're looking to use the range/learn more about it,
 go ahead and look at xref:getting-started.adoc[getting started].
 
 If you're looking to make a contribution,
-you can go ahead and skip to the xref:general-guidelines.adoc[general guidelines] themselves.
+you can go ahead and skip to the xref:contributing.adoc[contributing] section.
