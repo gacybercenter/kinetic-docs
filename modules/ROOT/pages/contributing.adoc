@@ -33,10 +33,8 @@ This implies that every branch should be mapped to an issue.
 
 For example,
 if you want to add an OpenStack project to the kinetic framework that is currently unsupported (e.g. https://docs.openstack.org/barbican/latest/[barbican]),
-create a new issue (specifically, a https://github.com/GeorgiaCyber/kinetic/issues/new/choose[feature request] using the issue template) entitled
-
-```[FEATURE] Add barbican to kinetic framework```
-
+create a new issue (specifically, a https://github.com/GeorgiaCyber/kinetic/issues/new/choose[feature request] using the issue template) entitled 
+`[FEATURE] Add barbican to kinetic framework`
 Titles should be specific and begin with the action taken (create, update, delete, etc.).
 
 The body of the issue should reference any code,
