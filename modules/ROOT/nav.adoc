@@ -2,6 +2,10 @@
 ** xref:getting-started.adoc#registration[Registration]
 ** xref:getting-started.adoc#logging-in[Logging In]
 * xref:what-is-the-georgia-cyber-range.adoc[What is the GCR?]
+** xref:what-is-the-georgia-cyber-range.adoc#history[History]
+** xref:what-is-the-georgia-cyber-range.adoc#components[What is a traditional Cyber Range?]
+** xref:what-is-the-georgia-cyber-range.adoc#differentiators[What makes GCR different?]
+** xref:what-is-the-georgia-cyber-range.adoc#supported-services[Supported Services]
 * xref:gcr-guide[Georgia Cyber Range User Guide]
 * xref:contributing.adoc[How to Contribute]
 ** xref:contributing.adoc#introduction[Introduction]
@@ -14,3 +18,4 @@
 ** xref:contributing.adoc#code[Code]
 ** xref:contributing.adoc#yaml[YAML]
 ** xref:contributing.adoc#salt[Salt]
+
