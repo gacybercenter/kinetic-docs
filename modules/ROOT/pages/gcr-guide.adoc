@@ -43,3 +43,8 @@ The API exposes all functionality but can be challenging for new users.
 For the purposes of this guide, we will assume that you will use the OpenStack Dashboard (Horizon).
 
 [#the-dashboard]
+== The OpenStack Dashboard
+
+When you first log in to the GCR, you will be presented with the Compute Overview Screen:
+
+image::compute-overview.png[Compute Overview]
