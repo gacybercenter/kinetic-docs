@@ -1,1 +1,45 @@
-= GCR Guide
+= Georgia Cyber Range User Guide
+
+This page will ensure that you make the most out of your Georgia Cyber Range account.
+
+[#you-should-know]
+== Things You Should Know
+
+There are a few things you should know...
+. Your Georgia Cyber Range project has the ability to directly connect any/all of your instances to the internet.
+. You are responsible for everything that happens inside of your Georgia Cyber Range project.
+. You must abide by the https://fixmeandmakemearealurl[Terms of Service] that you signed when your account was issued.
+Violating this agreement will result in immediate termination of services and no refund will be issued.
+
+[#dashboard-cli-api]
+== The Dashboard, the CLI, and the API
+
+There are three different ways to use the Georgia Cyber Range:
+
+. https://docs.openstack.org/horizon/latest/user/index.html[The OpenStack Dashboard]
+. https://docs.openstack.org/python-openstackclient/latest/[The OpenStack CLI]
+. https://docs.openstack.org/api-quick-start/[The OpenStack API]
+
+You should use the Dashboard if:
+* You have never used a Cyber Range or a Cloud Service before
+* You want to manually create resources
+* You prefer a web interface to a command line client
+
+The dashboard exposes the smallest amount of available functionality,
+but is the easiest to use.
+
+You should use the CLI if:
+* You have experience with using cloud services
+* You want to automate your use of the Georgia Cyber Range as much as possible
+
+The CLI provides a good mix of available functionality and ease of use.
+
+You should use the API if:
+* You are a programmer
+* You wish to incorporate your GCR resources into a larger effort/project
+
+The API exposes all functionality but can be challenging for new users.
+
+For the purposes of this guide, we will assume that you will use the OpenStack Dashboard (Horizon).
+
+[#the-dashboard]
