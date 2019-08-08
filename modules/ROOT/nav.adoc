@@ -11,6 +11,6 @@
 ** xref:contributing.adoc#asciidoc[Asciidoc]
 ** xref:contributing.adoc#workflow[Workflow]
 ** xref:contributing.adoc#sentences[Sentences]
-** xref:contributing.adoc#code[code]
+** xref:contributing.adoc#code[Code]
 ** xref:contributing.adoc#yaml[YAML]
-** xref:contributing.adoc#salt[salt]
+** xref:contributing.adoc#salt[Salt]
