@@ -78,6 +78,7 @@ and other files that do not contain code or documentation.
 https://www.atlassian.com/git/tutorials/saving-changes/gitignore[here is a good list] of files that should be ignored.
 * Use social platforms like Slack,
 GitLab,
+GitHub,
 or face-to-face meetings to discuss changes,
 de-conflict pull requests,
 and other work that is necessary to develop software when working as a team.
@@ -87,13 +88,12 @@ and other work that is necessary to develop software when working as a team.
 
 Let's walk through a simple example of how you go from an idea to a solution fully merged into the master branch.
 
-The first step is putting the changes into words through the GitLab issue tracker.
+The first step is putting the changes into words through the GitHub issue tracker.
 Read the xref:contributing.adoc#submitting-issues[submitting issues] section for more information.
 
 Once you do this,
-create a new branch in GitLab by going to the repository home page,
-clicking on the plus sign drop-down menu,
-and selecting _New branch_.
+create a new branch in GitHub by going to the repository home page and clicking on the fork button in the top right.
+Once you do this, you will be able to create a branch in your forked copy of the project.
 Make sure the branch name starts with the issue number and then succinctly paraphrases the issue title.
 
 Next, you will need to run ```git pull``` on your local machine to pull down the new branch.
@@ -136,21 +136,19 @@ An easy way to avoid this is to separate responsibilities and understand who is 
 * ```git push``` the local feature branch to the remote feature branch.
 
 Now that your remote feature branch is based on top of an up-to-date master branch,
-you can submit a merge request in GitLab.
+you can submit a pull request in GitHub.
 
 To do this,
-navigate to your branch in GitLab and click on the _Create merge request_ button.
-The title should automatically be generated to say _Resolve "<issue_title>"_ and the description should say _Closes #<issue_number>_.
-You should definitely add more to the description to explain how everything turned out,
+navigate to the kinetic project in GitHub abd click on the _Create pull request_ button.
+You will be able to choose the target branch and the source branch for the pull request,
+and be given an opportunity to describe what your work does.
+You should explain how everything turned out,
 what was tested,
 and what to expect.
 
-The final step before you submit the merge request is to decide if you want to delete the source branch when the merge request is accepted.
-In most cases you should check the box and remove the source branch because the feature is now part of master and has no reason to continue to exist as a separate branch.
-
 Once you verify everything,
-submit the merge request.
-If everything looks good by at least one other person looking over the changes and verifying that you didn't "break the build",
+submit the pull request.
+If everything looks good and one other person associated with kinetic looks over the changes and verifies that you didn't "break the build",
 then it will be merged into master.
 
 If something needs to be changed in the feature branch before merging,
@@ -159,89 +157,34 @@ commit them to the feature branch,
 and execute the above commands again to ensure your changes are always on top of an up-to-date master branch.
 Rinse and repeat as many times as necessary.
 
-[#gitlab-features]
-== GitLab Features
-
-GitLab has a treasure trove of features that make collaboration as painless as possible for software developers.
-At a minimum,
-a successful team should be using assignees,
-labels,
-and issues when deciding who works on what.
-
-Assignees simply assigns a GitLab account to an issue.
-You can assign multiple individuals to an issue.
-
-Labels are useful for creating issue categories.
-A simple example would be having a Feature label and a Bug label to differentiate features and bugs.
-Another example specific to CCTC (for example) would be a label to differentiate between the different modules (Windows, Linux, Networking) and then a generic OpenStack label.
-
-Issues have been explained in-depth already and should be foundational in any team workflow.
-
-=== GitLab IDE
-
-GitLab has a very useful web IDE that allows you to edit files directly within your browser.
-Changes are tracked automatically and you can commit to either the current branch or a new branch without touching the command line.
-
-If you are working on a system that you have not configured to your liking or you need to make changes to text documents that don't require any sort of testing,
-the web IDE is a very powerful interface. For a more in-depth list of features,
-read the documentation https://docs.gitlab.com/ee/user/project/repository/web_editor.html[here] and https://docs.gitlab.com/ee/user/project/web_ide/[here].
-= Style Guide
-
-Now that you know what courseware as code is,
-how to register for an account,
-and have a general idea of how to contribute in a meaninful manner,
-its time to discuss the style with which you need to write your content so that we can quickly accept it.
-
-IMPORTANT: You will probably notice that we don't follow our own style guide everywhere at the moment.
-Don't interpret that as license to ignore it.
-Our processes took awhile to catch up to our content development and we are in the process of going back and cleaning up the battlefield to bring everything in line with this style guide.
-
-[#extensions]
-== File Extensions and File Types
+[#asciidoc]
+== Asciidoc
 
 All contributed material that isn't source code,
 supporting assets (images, etc.),
-or explicitly required by a build system (e.g. .gitlab-ci.yml) *must* be in asciidoc format and end with the .adoc file extension.
+or explicitly required by a build system (e.g. custom GitHub issue templates) *must* be in asciidoc format and end with the ```.adoc``` file extension.
 This requirement covers documents,
 https://asciidoctor.org/docs/asciidoctor-revealjs/[slide decks],
 and more.
-
-Word documents,
-powerpoint slides,
-excel spreadsheets,
-and PDFs should *never* be present in the system,
-unless they're a product of a https://docs.gitlab.com/ee/ci/pipelines.html[pipeline].
 
 [#workflow]
 == Workflow
 
 As previously mentioned,
-we use the https://guides.github.com/introduction/flow/[github flow] as the workflow across all Cyber School courses.
+we use the https://guides.github.com/introduction/flow/[github flow] as the workflow across all Georgia Cyber Center repositories.
 The only branch that is offical (and deployable) is master.
 All other branches should be considered developmental,
 not suitable for usage,
 and unofficial.
 
-When one desires to make a change to the master branch,
-one should create a new https://docs.gitlab.com/ee/user/project/repository/branches/[branch],
-make the necessary changes,
-and do a merge request,
-all in rapid succession.
-Prior to doing a merge request,
-one should be sure that they have https://git-scm.com/docs/git-rebase[rebased] their proposed branch against master.
-Branches that are behind master make it difficult to review and approve changes,
-and will be rejected.
+When there is a particular point in the development history of the master branch that is of note (e.g. the exact commit where a significant upgrade was implemented in kinetic),
+https://help.github.com/en/articles/viewing-your-repositorys-tags[tags] are to be used to keep track of it for future reference.
+Using tags allows us to keep track of changes over time and correlate various changesets to differences in stability and performance,
+among other things.
 
 Each feature/bugfix that someone wishes to implement should be its own branch.
 Branches should never be long running,
 and should be deleted as soon as they are either merged in to master or rejected by the maintainers.
-
-When there is a particular point in the development history of the master branch that is of note (e.g. the exact commit that a course iteration starts on),
-https://docs.gitlab.com/ee/university/training/topics/tags.html[tags] are to be used to keep track of it for future reference.
-Using tags allows us to keep track of changes over time and correlate various changesets to differences in student outcomes,
-among other things.
-
-
 
 [#sentences]
 == Sentences
@@ -263,31 +206,37 @@ and have it render like this:
 
 The quick brown fox jumped over the lazy dog.
 
-I personally prefer to do one clause per line,
-so if there is a comma or a semicolon in a sentence,
-that would also trigger a line break.
-That level of detail is not required for general contributions,
-although certain projects may require it.
+[#code]
+== Code
 
-[#attributes-and-metadata]
-== Attributes and Metadata
+When writing code (salt, yaml, etc.) that you with to be included in the kinetic project,
+you should adhere to the following guidelines
 
-Attributes and metadata are an extremely important part of managing templatization-friendly repositories.
-The Cyber School uses them to keep track of various things,
-such as the various objectives covered in a particular lesson,
-the objectives that a quiz question is testing,
-etc.
+[#yaml]
+=== YAML
 
-Each project will have their own metadata and attribute requirements.
-Be sure to adhere to them.
-You can read more about metadata and attributes https://asciidoctor.org/docs/asciidoc-recommended-practices/#document-attributes-i-e-variables[here]
+* YAML documents will always use two spaces as its indentation mechanism
+* YAML documents will have the file extension of ```.yaml```
+* YAML documents will represent lists across multiple lines, e.g.
+[source, yaml]
+----
+foo:
+  - bar
+  - baz
+----
 
-[#pipelines]
-== Pipelines
+not
 
-While there is currently a shell-based gitlab runner that is available and used as default for all projects,
-this runner is deprecated and will be removed in the future.
-It has been replaced by a docker runner,
-which can be specified by using the 'docker' tag in your jobs.
-All new jobs should use docker,
-and all legacy jobs should be converted as soon as is practicable.
+[source, yaml]
+----
+foo: [bar, baz]
+----
+
+[#salt]
+=== Salt
+
+* salt state files will always use two spaces as its indentation mechanism
+* salt state files will have the file extension of ```.sls```
+* salt state files will always use the jinja templating engine,
+when templating is required
+* salt state files will be idempotent when executed repeatedly
