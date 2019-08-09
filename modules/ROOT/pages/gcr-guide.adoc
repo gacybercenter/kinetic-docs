@@ -92,3 +92,40 @@ image::images.png[Images View]
 
 You may also edit the metadata and properties of images that you own,
 and share images with other projects.
+
+[#volumes]
+=== Volumes
+
+The volumes tab displays all of your currently-allocated block storage devices (volumes).
+Volumes can all be created, destroyed, detached, and attached to your various instances from this tab.
+
+image::volumes.png[Volumes Tab]
+
+You can also assign various properties to your volumes and configure them to be either read-only or read-write from here.
+
+[#network-topology]
+=== Network Topology
+
+The network topology tab will give you a visual representation of all of your currently configured instances,
+networks,
+and routers.
+
+image::network-topology.png[Network Topology]
+
+You also have direct access to the consoles of all of your instances from this page.
+
+[#networks]
+=== Networks
+
+The networks tab displays all of the networks that you have access too,
+both those you have created and those that have been shared with you (such as public).
+
+image::networks.png[Networks Tab]
+
+From this page,
+you can also create new networks and subnets for use with your other resources.
+
+[#routers]
+=== Routers
+
+
