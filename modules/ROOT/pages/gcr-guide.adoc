@@ -209,7 +209,7 @@ Lorem ipsum.
 
 For further information about using Designate, see the https://docs.openstack.org/designate/latest/#for-end-users[designate user guide].
 
-[#object-store-service]
+[#object-storage-service]
 == The Object Storage Service (Swift) 
 
 Lorem ipsum.
