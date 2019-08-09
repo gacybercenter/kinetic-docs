@@ -6,9 +6,11 @@ This page will ensure that you make the most out of your Georgia Cyber Range acc
 == Things You Should Know
 
 There are a few things you should know...
+
 . Your Georgia Cyber Range project has the ability to directly connect any/all of your instances to the internet.
 . You are responsible for everything that happens inside of your Georgia Cyber Range project.
 . You must abide by the https://fixmeandmakemearealurl[Terms of Service] that you signed when your account was issued.
+
 Violating this agreement will result in immediate termination of services and no refund will be issued.
 
 [#dashboard-cli-api]
