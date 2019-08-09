@@ -45,6 +45,45 @@ For the purposes of this guide, we will assume that you will use the OpenStack D
 [#the-dashboard]
 == The OpenStack Dashboard
 
+The OpenStack Dashboard provides a simple interface to the most common functions of the Georgia Cyber Range.
+This section will touch on basic utilization of the most common features and provide links to more extensive upstream user documentation.
+
+[#compute-overview]
+=== Compute Overview
+
 When you first log in to the GCR, you will be presented with the Compute Overview Screen:
 
 image::compute-overview.png[Compute Overview]
+
+This screen will summarize your current GCR resource utilization when compared against what you have reserved in your account.
+This screen will be empty when you log in for the first time,
+but will populate as you create various resources.
+
+[#apis]
+=== API Access
+
+The API Access tab provides the current list of API endpoints for use.
+
+image::api-access.png[API Access]
+
+It also provides RC files that allow you to use the OpenStack CLI easily.
+
+[#instances]
+=== Instances
+
+The instances tab allows you to view all of your currently deployed instances (virtual machines).
+
+image::instances.png[Instances View]
+
+It also lets you perform common functions such as start, stop, reboot, and destroy,
+as well as gather useful information about your instances such as assigned IP address and power state.
+
+[#images]
+=== Images
+
+The images tab allows you to view all of the publicly available images in the GCR as well as any private images you have uploaded specifically to your project.
+
+image::images.png[Images View]
+
+You may also edit the metadata and properties of images that you own,
+and share images with other projects.
