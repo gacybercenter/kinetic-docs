@@ -174,19 +174,19 @@ Lorem ipsum.
 
 For further information about using Nova, see the https://docs.openstack.org/nova/latest/#for-end-users[nova user guide] or the https://docs.openstack.org/latest/user/[OpenStack end user guide].
 
-[#volume-service]
-== The Volume Service (Cinder) 
-
-Lorem ipsum.
-
-For further information about using Cinder, see the https://docs.openstack.org/cinder/latest/#for-end-users[cinder user guide] or the https://docs.openstack.org/latest/user/[OpenStack end user guide].
-
 [#image-service]
 == The Image Service (Glance) 
 
 Lorem ipsum.
 
 For further information about using Glance, see the https://docs.openstack.org/glance/latest/user/index.html[glance user guide] or the https://docs.openstack.org/latest/user/[OpenStack end user guide].
+
+[#volume-service]
+== The Volume Service (Cinder) 
+
+Lorem ipsum.
+
+For further information about using Cinder, see the https://docs.openstack.org/cinder/latest/#for-end-users[cinder user guide] or the https://docs.openstack.org/latest/user/[OpenStack end user guide].
 
 [#network-service]
 == The Network Service (Neutron) 
