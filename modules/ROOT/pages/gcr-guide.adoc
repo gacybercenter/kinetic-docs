@@ -167,3 +167,52 @@ image::object-store.png[Object Store]
 
 You can create new containers, upload new objects, and create URLs to distribute for public use from this tab as well.
 
+[#compute-service]
+== The Compute Service (Nova)
+
+Lorem ipsum.
+
+For further information about using Nova, see the https://docs.openstack.org/nova/latest/#for-end-users[nova user guide].
+
+[#volume-service]
+== The Volume Service (Cinder) 
+
+Lorem ipsum.
+
+For further information about using Cinder, see the https://docs.openstack.org/cinder/latest/#for-end-users[cinder user guide].
+
+[#image-service]
+== The Image Service (Glance) 
+
+Lorem ipsum.
+
+For further information about using Glance, see the https://docs.openstack.org/glance/latest/#for-end-users[glance user guide].
+
+[#network-service]
+== The Network Service (Neutron) 
+
+Lorem ipsum.
+
+For further information about using Neutron, see the https://docs.openstack.org/neutron/latest/#for-end-users[neutron user guide].
+
+[#orchestration-service]
+== The Orchestration Service (Heat) 
+
+Lorem ipsum.
+
+For further information about using Heat, see the https://docs.openstack.org/heat/latest/#for-end-users[heat user guide].
+
+[#dns-service]
+== The DNS Service (Designate) 
+
+Lorem ipsum.
+
+For further information about using Designate, see the https://docs.openstack.org/designate/latest/#for-end-users[designate user guide].
+
+[#object-store-service]
+== The Object Storage Service (Swift) 
+
+Lorem ipsum.
+
+For further information about using Swift, see the https://docs.openstack.org/swift/latest/#for-end-users[swift user guide].
+
