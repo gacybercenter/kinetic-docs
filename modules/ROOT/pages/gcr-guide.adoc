@@ -128,4 +128,42 @@ you can also create new networks and subnets for use with your other resources.
 [#routers]
 === Routers
 
+The routers tab displays all routers that are owned by your personal project.
+
+image::routers.png[Routers Tab]
+
+You can also create new routers and connect existing routers to other networks from this page.
+The creation of additional static routes is also done here.
+
+[#stacks]
+=== Stacks
+
+The stacks tab displays all of your orchestration objects (stacks) and their current state (building, active, failed, etc.)
+
+image::stacks.png[Stacks Tab]
+
+You can also:
+
+* View all resources associated with a stack
+* Get the status of individual resources within stacks
+* Get a visualization of the relationships between stack objects
+* Export templates based on already-existing stacks
+
+[#zones]
+=== Zones
+
+The zones tab displays all of your active DNS zones that you have created in your project.
+
+image::zones.png[Zones Tab]
+
+You can also create records within existing zones from here.
+
+[#object-store]
+=== Object Store
+
+The containers tab (under the object store) give you a graphical view of all of your containers and their associated objects.
+
+image::object-store.png[Object Store]
+
+You can create new containers, upload new objects, and create URLs to distribute for public use from this tab as well.
 
