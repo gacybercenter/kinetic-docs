@@ -28,12 +28,14 @@ will observe the https://guides.github.com/introduction/flow/[Github Flow]
 [#submitting-issues]
 == Submitting Issues
 
+To report problems or suggest features, go https://github.com/GeorgiaCyber/kinetic/issues[here].
+
 A core component of the feature branch workflow is to use a different branch for each individual feature or issue.
 This implies that every branch should be mapped to an issue.
 
 For example,
 if you want to add an OpenStack project to the kinetic framework that is currently unsupported (e.g. https://docs.openstack.org/barbican/latest/[barbican]),
-create a new issue (specifically, a https://github.com/GeorgiaCyber/kinetic/issues/new/choose[feature request] using the issue template) entitled 
+create a new issue (specifically, a feature request) entitled 
 `[FEATURE] Add barbican to kinetic framework`
 Titles should be specific and begin with the action taken (create, update, delete, etc.).
 
