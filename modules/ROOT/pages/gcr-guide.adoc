@@ -23,6 +23,7 @@ There are three different ways to use the Georgia Cyber Range:
 . https://docs.openstack.org/api-quick-start/[The OpenStack API]
 
 You should use the Dashboard if:
+
 * You have never used a Cyber Range or a Cloud Service before
 * You want to manually create resources
 * You prefer a web interface to a command line client
@@ -31,12 +32,14 @@ The dashboard exposes the smallest amount of available functionality,
 but is the easiest to use.
 
 You should use the CLI if:
+
 * You have experience with using cloud services
 * You want to automate your use of the Georgia Cyber Range as much as possible
 
 The CLI provides a good mix of available functionality and ease of use.
 
 You should use the API if:
+
 * You are a programmer
 * You wish to incorporate your GCR resources into a larger effort/project
 
