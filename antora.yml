@@ -3,3 +3,5 @@ title: Georgia Cyber Range Usage and Contribution Guide
 version: 'latest'
 nav:
   - modules/ROOT/nav.adoc
+  - modules/contributing/nav.adoc
+  - modules/documentation/nav.adoc

@@ -56,7 +56,7 @@ the feature branch should be named *13-Add-barbican-to-kinetic-framework* if the
 Git can quickly become a real pain if contributors do not use it correctly.
 Please read the Git Team Workflow Cheatsheet in the Introduction for a good example of standard workflow.
 
-=== DO NOT:
+=== DO NOT
 
 * Commit directly to the master branch unless it is a very minor change (i.e fix typo, change file name, etc.)
 * Have multiple significant changes take place in a single commit
@@ -71,7 +71,7 @@ make sure your local feature branch is rebased on top of the head of the remote 
 then submit your merge request.
 Read the Your First Contribution section for more details.
 
-=== DO:
+=== DO
 * Write meaningful commit messages. More details on this can be found https://chris.beams.io/posts/git-commit/[in this blog post].
 * Use the .gitignore file to ignore unnecessary files like compiled executables,
 temporary files,
