@@ -1,2 +1,2 @@
-* xref:index.adoc[Kinetic Framework]
+* https://docs.gacyberrange.org/home/latest/index.html[Georgia Cyber Range]
 
