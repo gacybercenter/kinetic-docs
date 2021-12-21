@@ -1,0 +1,18 @@
+= Kinetic Framework
+
+Under Construction...
+
+[#purpose]
+== Baremetal Provisioning
+
+Lorem ipsum.
+
+[#bootstrap]
+== Baremetal Provisioning
+
+Lorem ipsum.
+
+[#orchestration]
+== Service Orchestration
+
+Lorem ipsum.
