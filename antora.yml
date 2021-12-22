@@ -1,5 +1,0 @@
-name: docs
-version: 'latest'
-nav:
-  - modules/contributing/nav.adoc
-  - modules/documentation/nav.adoc
