@@ -13,6 +13,240 @@ Lorem ipsum.
 Lorem ipsum.
 
 [#orchestration]
-== Service Orchestration
+== Service Orchestration with Salt and Kinetic Framework
 
-Lorem ipsum.
+To initiate a full orchestration of the Openstack environment:
+
+----
+salt-run state.orch orch
+----
+
+This rebuilds the environment based on if [type] is enabled in kinetic pillar in the "/environment/hosts.sls" file.
+
+Example:
+
+----
+hosts:
+  cache:
+    style: virtual
+    enabled: False <1>
+    count: 1
+    ram: 8192000
+    cpu: 2
+    os: ubuntu2004
+    disk: 512G
+    networks:
+      management:
+        interfaces: [ens3]
+----
+
+<1> If the `enabled` parameter is set to the value `True` the virtual machine or physical host will rebuild/build. +
+If `enabled` is set to the value `False` it will not rebuild/build.
+
+[#build]
+== Manual Build of Openstack Infrastructure Services
+
+[#destroy_services]
+== Destroy current OpenStack environment
+
+NOTE: Destroying the entire environment isn't always a necessity during rebuild.
+
+TIP: Make sure you are in the correct salt master before proceeding with these steps
+
+All currently running Openstack services must be zeriozed. This may vary based on the currently deployed services:
+
+Zeroize Openstack Services:
+----
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"volume"}'; salt-key -d volume* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"heat"}'; salt-key -d heat* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"swift"}'; salt-key -d swift* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"designate"}'; salt-key -d designate* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"cinder"}'; salt-key -d cinder* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"horizon"}' ; salt-key -d horizon* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"neutron"}' ; salt-key -d neutron* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"nova"}' ; salt-key -d nova* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"glance"}' ; salt-key -d glance* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"placement"}' ; salt-key -d placement* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"mds"}' ; salt-key -d mds* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"keystone"}' ; salt-key -d keystone* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"bind"}' ; salt-key -d bind* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"ovsdb"}' ; salt-key -d ovsdb* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"rabbitmq"}' ; salt-key -d rabbitmq* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"memcached"}' ; salt-key -d memcached* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"mysql"}' ; salt-key -d mysql* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"etcd"}' ; salt-key -d etcd* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"cinder"}'; salt-key -d cinder* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"jproxy"}'; salt-key -d jproxy* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"cyborg"}'; salt-key -d cyborg* -y
+----
+
+Zeroize compute nodes:
+----
+salt-run state.orch orch.zeroize pillar='{"target":"compute"}'
+----
+
+NOTE: Currently we have to run this to turn off all of the computes and remove the keys
+
+----
+salt 'compute*' system.poweroff
+salt-key -d compute* -y
+----
+
+[#destroy_ceph]
+== Destroy Ceph
+
+NOTE: Only destroy Ceph pools if rebuilding Ceph, otherwise skip to Phase 0.
+
+Remove existing data from the ceph storage:
+
+----
+ceph tell mon.* injectargs --mon_allow_pool_delete true
+ceph osd pool delete vms vms --yes-i-really-really-mean-it
+ceph osd pool delete images images --yes-i-really-really-mean-it
+ceph osd pool delete volumes volumes --yes-i-really-really-mean-it
+ceph osd pool delete device_health_metrics device_health_metrics --yes-i-really-really-mean-it
+ceph osd pool delete .rgw.root .rgw.root  --yes-i-really-really-mean-it
+ceph osd pool delete default.rgw.log default.rgw.log --yes-i-really-really-mean-it
+ceph osd pool delete default.rgw.control default.rgw.control --yes-i-really-really-mean-it
+ceph osd pool delete default.rgw.meta default.rgw.meta --yes-i-really-really-mean-it
+ceph osd pool delete default.rgw.meta default.rgw.meta --yes-i-really-really-mean-it
+ceph osd pool delete default.rgw.buckets.index default.rgw.buckets.index --yes-i-really-really-mean-it
+ceph osd pool delete default.rgw.buckets.data default.rgw.buckets.data --yes-i-really-really-mean-it
+ceph tell mon.* injectargs --mon_allow_pool_delete false
+----
+
+[#build_services]
+== Build Openstack Services
+
+NOTE: Ensure everything has been high stated before building the services
+
+----
+salt \* state.highstate
+----
+
+NOTE: Order of operations matter to meet dependency requirements
+
+=== Phase 0
+
+NOTE: If this is an initial build, the haproxy node will be need to be built first. The firewall may need to be manually pointed to the correct address for haproxy (currently handled by danos state module if enabled in pillar configuration).
+
+----
+salt-run state.orch orch.generate pillar='{"type":"haproxy"}'
+----
+
+=== Phase 1
+----
+salt-run state.orch orch.generate pillar='{"type":"mysql"}'
+salt-run state.orch orch.generate pillar='{"type":"etcd"}'
+salt-run state.orch orch.generate pillar='{"type":"rabbitmq"}'
+salt-run state.orch orch.generate pillar='{"type":"ovsdb"}'
+salt-run state.orch orch.generate pillar='{"type":"memcached"}'
+salt-run state.orch orch.generate pillar='{"type":"bind"}'
+----
+
+NOTE: If rebuilding CEPH, the cephmon nodes need to be rebuilt during this phase.
+----
+salt-run state.orch orch.generate pillar='{"type":"cephmon"}'
+----
+
+=== Phase 2
+
+----
+salt-run state.orch orch.generate pillar='{"type":"keystone"}'
+----
+
+NOTE: If rebuilding CEPH, the storage node needs to be rebuilt during this phase.
+
+----
+salt-run state.orch orch.generate pillar='{"type":"storage"}'
+----
+
+=== Phase 3
+----
+salt-run state.orch orch.generate pillar='{"type":"placement"}'
+salt-run state.orch orch.generate pillar='{"type":"glance"}'
+salt-run state.orch orch.generate pillar='{"type":"nova"}'
+salt-run state.orch orch.generate pillar='{"type":"neutron"}'
+salt-run state.orch orch.generate pillar='{"type":"network"}'
+salt-run state.orch orch.generate pillar='{"type":"horizon"}'
+salt-run state.orch orch.generate pillar='{"type":"heat"}'
+salt-run state.orch orch.generate pillar='{"type":"cinder"}'
+salt-run state.orch orch.generate pillar='{"type":"designate"}'
+salt-run state.orch orch.generate pillar='{"type":"swift"}'
+salt-run state.orch orch.generate pillar='{"type":"zun"}'
+salt-run state.orch orch.generate pillar='{"type":"volume"}'
+----
+
+=== Phase 4
+----
+salt-run state.orch orch.generate pillar='{"type":"compute"}'
+salt-run state.orch orch.generate pillar='{"type":"container"}'
+----
+
+=== Deprecated services
+The following services are no longer used in the environment, documentation exists if there is a need to re-deploy the nodes.
+----
+salt-run state.orch orch.generate pillar='{"type":"barbican"}'
+salt-run state.orch orch.generate pillar='{"type":"magnum"}'
+salt-run state.orch orch.generate pillar='{"type":"share"}'
+salt-run state.orch orch.generate pillar='{"type":"mds"}'
+salt-run state.orch orch.generate pillar='{"type":"cyborg"}'
+salt-run state.orch orch.generate pillar='{"type":"jproxy"}'
+salt-run state.orch orch.generate pillar='{"type":"gpu"}'
+----
+
+[#troubleshooting]
+Issues:
+----
+[ERROR   ] {'return': {'ready': False, 'type': 'neutron', 'comment': ['ovsdb-b5111677-cd25-5af8-8f04-f9169bbd685c is install but needs to be configure', 'ovsdb-c3906691-96df-5818-a688-eac4edd3d939 is install but needs to be configure', 'ovsdb-e1346c3d-b25e-5ade-b539-a659d208af6c is install but needs to be configure']}}
+----
+
+This indicates that a dependancy for the service was not met. +
+This may happen when a service doesn't complete a build phase. Alternatively this may happen if a service was started too early after troubleshooting issues with a broken build. The build_phase can be set manually with the following commands:
+
+----
+salt '<service>' grains.setval build_phase configure
+salt '<service>' mine.update
+----
+
+----
+----------
+                        ID: reboot_cephmon_configure
+                  Function: salt.function
+                      Name: system.reboot
+                    Result: False
+                   Comment: One or more requisite failed: orch/provision.apply_configure_cephmon
+                   Started: 14:24:08.261439
+                  Duration: 0.01 ms
+                   Changes:   
+              ----------
+                        ID: wait_for_cephmon_configure_reboot
+                  Function: salt.wait_for_event
+                      Name: salt/minion/*/start
+                    Result: False
+                   Comment: One or more requisite failed: orch/provision.reboot_cephmon_configure
+                   Started: 14:24:08.262216
+                  Duration: 0.009 ms
+                   Changes:   
+              ----------
+                        ID: set_build_phase_configure_cephmon
+                  Function: salt.function
+                      Name: grains.setval
+                    Result: False
+                   Comment: One or more requisite failed: orch/provision.apply_configure_cephmon
+                   Started: 14:24:08.262574
+                  Duration: 0.006 ms
+                   Changes:   
+              ----------
+                        ID: set_build_phase_configure_mine_cephmon
+                  Function: salt.function
+                      Name: mine.update
+                    Result: False
+                   Comment: One or more requisite failed: orch/provision.set_build_phase_configure_cephmon
+                   Started: 14:24:08.263654
+                  Duration: 0.006 ms
+                   Changes:   
+----
+
+This error is a catch-22 between ceph and the storage nodes. The storage nodes must be built next and and the cephmon service needs to be highstated.
+
