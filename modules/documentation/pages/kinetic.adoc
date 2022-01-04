@@ -70,7 +70,14 @@ salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"placem
 salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"mds"}' ; salt-key -d mds* -y
 salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"keystone"}' ; salt-key -d keystone* -y
 salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"bind"}' ; salt-key -d bind* -y
+----
+
+NOTE: If using network-ovn as the network backend, the ovsdb node needs to be deployed, otherwise disregard
+----
 salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"ovsdb"}' ; salt-key -d ovsdb* -y
+----
+
+----
 salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"rabbitmq"}' ; salt-key -d rabbitmq* -y
 salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"memcached"}' ; salt-key -d memcached* -y
 salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"mysql"}' ; salt-key -d mysql* -y
