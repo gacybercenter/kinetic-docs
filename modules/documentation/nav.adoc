@@ -1,20 +1,17 @@
 * Kinetic Framework
-** xref:kinetic.adoc[Kinetic]
-*** xref:kinetic.adoc#process[Process]
+** xref:kinetic.adoc[Orchestration Process]
 *** xref:kinetic.adoc#saltstack[SaltStack]
 *** xref:kinetic.adoc#pxe[Preboot eXecution Environment]
 *** xref:kinetic.adoc#netboot[Cloud Image Netboot]
 
-** xref:baremetal.adoc[Baremetal Provisioning]
+** xref:baremetal.adoc[Baremetal Orchestration]
 
 ** xref:orchestration.adoc#orchestration[Service Orchestration]
-
-*** xref:orchestration.adoc#orchestration[Service Orchestration]
-**** xref:orchestration.adoc#build[Manual Environment Build]
-**** xref:orchestration.adoc#destroy_services[Destroy Current Environment]
-**** xref:orchestration.adoc#destroy_ceph[Destroy Ceph]
-**** xref:orchestration.adoc#build_services[Build Openstack Services]
-**** xref:orchestration.adoc#troubleshooting[Troubleshooting]
+*** xref:orchestration.adoc#build[Manual Environment Build]
+*** xref:orchestration.adoc#destroy_services[Destroy Current Environment]
+*** xref:orchestration.adoc#destroy_ceph[Destroy Ceph]
+*** xref:orchestration.adoc#build_services[Build Openstack Services]
+*** xref:orchestration.adoc#troubleshooting[Troubleshooting]
 
 ** xref:openstack.adoc[OpenStack Services]
 *** xref:openstack.adoc#compute-service[The Compute Service (Nova)]

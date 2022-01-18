@@ -1,21 +1,16 @@
-= Kinetic Framework
-
-[#process]
-== Provisioning Process
-
-Lorem ipsum.
+= Kinetic Framework Orchestration Process
 
 [#saltstack]
-=== Kinetic SaltStack
+== Kinetic SaltStack
 
 Lorem ipsum.
 
 [#pxe]
-=== Preboot eXecution Environment
+== Preboot eXecution Environment
 
 Lorem ipsum.
 
 [#netboot]
-=== Cloud Image Netboot
+== Cloud Image Netboot
 
 Lorem ipsum.
