@@ -37,9 +37,38 @@ If `enabled` is set to the value `False` it will not rebuild/build.
 [#destroy_services]
 === Destroy current OpenStack environment
 
+
 NOTE: Destroying the entire environment isn't always a necessity during rebuild.
 
 TIP: Make sure you are in the correct salt master before proceeding with these steps
+
+Turn off controllers:
+----
+salt 'controller*' system.poweroff
+salt-key -d 'controller*' -y
+----
+
+Delete Cache:
+on pxe:
+----
+rm /var/www/assignments/*
+----
+
+on salt:
+----
+rm -rf /var/cache/salt/master/*
+systemctl restart salt-master
+systemctl restart salt-minion
+salt '*' saltutil.sync_all
+salt '*' saltutil.refresh_pillar
+salt '*' mine.update
+salt 'salt*' mine.get pxe* redfish.gather_endpoints
+----
+
+Rebuild Controllers:
+----
+salt-run state.orch orch.generate pillar='{"type":"controller"}'
+----
 
 All currently running Openstack services must be zeriozed. This may vary based on the currently deployed services:
 
@@ -140,12 +169,12 @@ NOTE: Order of operations matter to meet dependency requirements
 NOTE: If this is an initial build, the haproxy node will be need to be built first. The firewall may need to be manually pointed to the correct address for haproxy (currently handled by danos state module if enabled in pillar configuration).
 
 ----
+salt-run state.orch orch.generate pillar='{"type":"cache"}'
 salt-run state.orch orch.generate pillar='{"type":"haproxy"}'
 ----
 
 ==== Phase 1
 ----
-salt-run state.orch orch.generate pillar='{"type":"cache"}'
 salt-run state.orch orch.generate pillar='{"type":"mysql"}'
 salt-run state.orch orch.generate pillar='{"type":"etcd"}'
 ----
