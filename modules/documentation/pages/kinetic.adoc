@@ -3,14 +3,14 @@
 [#saltstack]
 == Kinetic SaltStack
 
-Lorem ipsum.
+Under Construction...
 
 [#pxe]
 == Preboot eXecution Environment
 
-Lorem ipsum.
+Under Construction...
 
 [#netboot]
 == Cloud Image Netboot
 
-Lorem ipsum.
+Under Construction...
