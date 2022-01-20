@@ -87,23 +87,7 @@ salt 'container*' system.poweroff
 salt-key -d container* -y
 ----
 
-[#destroy_ceph]
-=== Destroy Ceph
-
-NOTE: If rebuilding Ceph, perform the commands below. Currently we have to run the commands to turn off all of the storage and cephmon nodes and remove the keys.
-
-----
-salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"storage"}'
-salt 'storage*' system.poweroff
-salt-key -d storage* -y
-
-
-salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"cephmon"}'
-salt-key -d cephmon* -y
-----
-
-
-NOTE: Only destroy Ceph pools if not rebuilding Ceph, otherwise skip to Phase 0.
+NOTE: Only destroy Ceph pools if not rebuilding Ceph, refer to <<destroy_ceph, Destroy Ceph>>.
 
 Remove existing data from the ceph storage:
 
@@ -269,6 +253,20 @@ salt '<service>' mine.update
 
 This error is a catch-22 between ceph and the storage nodes. The storage nodes must be built next and and the cephmon service needs to be highstated.
 
+[#destroy_ceph]
+=== Destroy Ceph
+
+NOTE: If rebuilding Ceph, perform the commands below. Currently we have to run the commands to turn off all of the storage and cephmon nodes and remove the keys.
+
+----
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"storage"}'
+salt 'storage*' system.poweroff
+salt-key -d storage* -y
+
+
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"cephmon"}'
+salt-key -d cephmon* -y
+----
 
 [#destroy_controller]
 === Destroy Controllers
