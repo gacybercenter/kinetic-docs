@@ -34,41 +34,11 @@ If `enabled` is set to the value `False` it will not rebuild/build.
 [#build]
 == Manual Orchestration of Openstack Infrastructure Services
 
-[#destroy_services]
-=== Destroy current OpenStack environment
-
-
-NOTE: Destroying the entire environment isn't always a necessity during rebuild.
+CAUTION: Destroying the entire environment starting with controllers isn't always a necessity during rebuild.
 
 TIP: Make sure you are in the correct salt master before proceeding with these steps
 
-Turn off controllers:
-----
-salt 'controller*' system.poweroff
-salt-key -d 'controller*' -y
-----
-
-Delete Cache:
-on pxe:
-----
-rm /var/www/assignments/*
-----
-
-on salt:
-----
-rm -rf /var/cache/salt/master/*
-systemctl restart salt-master
-systemctl restart salt-minion
-salt '*' saltutil.sync_all
-salt '*' saltutil.refresh_pillar
-salt '*' mine.update
-salt 'salt*' mine.get pxe* redfish.gather_endpoints
-----
-
-Rebuild Controllers:
-----
-salt-run state.orch orch.generate pillar='{"type":"controller"}'
-----
+If rebuilding starting with controllers, start at <<destroy_controller, Destroy Controllers>>. Otherwise proceed with the steps below.
 
 All currently running Openstack services must be zeriozed. This may vary based on the currently deployed services:
 
@@ -298,3 +268,39 @@ salt '<service>' mine.update
 ----
 
 This error is a catch-22 between ceph and the storage nodes. The storage nodes must be built next and and the cephmon service needs to be highstated.
+
+
+[#destroy_controller]
+=== Destroy Controllers
+
+CAUTION: Destroying the entire environment isn't always a necessity during rebuild.
+
+TIP: Make sure you are in the correct salt master before proceeding with these steps
+
+Turn off controllers:
+----
+salt 'controller*' system.poweroff
+salt-key -d 'controller*' -y
+----
+
+Delete Cache:
+on pxe:
+----
+rm /var/www/assignments/*
+----
+
+on salt:
+----
+rm -rf /var/cache/salt/master/*
+systemctl restart salt-master
+systemctl restart salt-minion
+salt '*' saltutil.sync_all
+salt '*' saltutil.refresh_pillar
+salt '*' mine.update
+salt 'salt*' mine.get pxe* redfish.gather_endpoints
+----
+
+Rebuild Controllers:
+----
+salt-run state.orch orch.generate pillar='{"type":"controller"}'
+----
