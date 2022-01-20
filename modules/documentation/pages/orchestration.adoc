@@ -256,7 +256,7 @@ This error is a catch-22 between ceph and the storage nodes. The storage nodes m
 [#destroy_ceph]
 === Destroy Ceph
 
-NOTE: If rebuilding Ceph, perform the commands below. Currently we have to run the commands to turn off all of the storage and cephmon nodes and remove the keys.
+NOTE: If rebuilding Ceph, perform the commands below. Currently, you are required to run the commands to turn off all of the storage and cephmon nodes as well as remove the keys.
 
 ----
 salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"storage"}'
