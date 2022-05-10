@@ -130,7 +130,11 @@ salt-run state.orch orch.generate pillar='{"type":"haproxy"}'
 ==== Phase 1
 ----
 salt-run state.orch orch.generate pillar='{"type":"mysql"}'
-salt-run state.orch orch.generate pillar='{"type":"etcd"}'
+----
+
+NOTE: If rebuilding CEPH, the cephmon nodes need to be rebuilt during this phase.
+----
+salt-run state.orch orch.generate pillar='{"type":"cephmon"}'
 ----
 
 NOTE: If using network-ovn as the network backend, the ovsdb node needs to be created, otherwise disregard.
@@ -139,17 +143,13 @@ salt-run state.orch orch.generate pillar='{"type":"ovsdb"}'
 ----
 
 ----
+salt-run state.orch orch.generate pillar='{"type":"etcd"}'
 salt-run state.orch orch.generate pillar='{"type":"rabbitmq"}'
 salt-run state.orch orch.generate pillar='{"type":"memcached"}'
 salt-run state.orch orch.generate pillar='{"type":"bind"}'
 ----
 
 
-
-NOTE: If rebuilding CEPH, the cephmon nodes need to be rebuilt during this phase.
-----
-salt-run state.orch orch.generate pillar='{"type":"cephmon"}'
-----
 
 ==== Phase 2
 
