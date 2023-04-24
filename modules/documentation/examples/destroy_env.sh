@@ -19,6 +19,8 @@ salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"cinder
 salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"cache"}'; salt-key -d cache* -y
 salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"network"}'; salt-key -d network* -y
 salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"zun"}'; salt-key -d zun* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"guacamole"}'; salt-key -d guacamole* -y
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"placement"}'; salt-key -d placement* -y
 
 # If using network-ovn as the network backend, the ovsdb node needs to be zeroized, otherwise disregard
 # 

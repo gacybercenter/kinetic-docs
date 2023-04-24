@@ -106,7 +106,7 @@ Our next step will be to clear any and all cached data leveraging our salt maste
 ----
 #!/bin/bash
 # clear any cached assignments for physical pxe boots
-salt pxe* cmd.run 'rm /var/www/assignments/*'
+salt pxe* cmd.run 'rm /var/www/html/assignments/*'
 rm -rf /var/cache/salt/master/*
 
 # These system restarts will ensure that Salt pulls up-to-data code
@@ -188,6 +188,9 @@ NOTE: These four services can be provisioned simultaneously
 salt-run state.orch orch.generate pillar='{"type":"keystone"}'
 ----
 
+NOTE: 
+
+
 // haproxy needs highstated
 
 NOTE: If rebuilding CEPH, the storage node needs to be rebuilt during this phase.
@@ -203,19 +206,25 @@ salt-run state.orch orch.generate pillar='{"type":"storage"}'
 
 [,bash]
 ----
-salt-run state.orch orch.generate pillar='{"type":"placement"}'
+# Dependincies Copleted in Prior Phases
 salt-run state.orch orch.generate pillar='{"type":"glance"}'
-salt-run state.orch orch.generate pillar='{"type":"nova"}'
-salt-run state.orch orch.generate pillar='{"type":"neutron"}'
-salt-run state.orch orch.generate pillar='{"type":"network"}'
 salt-run state.orch orch.generate pillar='{"type":"horizon"}'
 salt-run state.orch orch.generate pillar='{"type":"guacamole"}'
 salt-run state.orch orch.generate pillar='{"type":"heat"}'
-salt-run state.orch orch.generate pillar='{"type":"cinder"}'
 salt-run state.orch orch.generate pillar='{"type":"designate"}'
 salt-run state.orch orch.generate pillar='{"type":"swift"}'
 salt-run state.orch orch.generate pillar='{"type":"zun"}'
+
+# Dependancy Order Group
+salt-run state.orch orch.generate pillar='{"type":"cinder"}'
 salt-run state.orch orch.generate pillar='{"type":"volume"}'
+
+# Dependancy Order Group
+salt-run state.orch orch.generate pillar='{"type":"placement"}'
+salt-run state.orch orch.generate pillar='{"type":"nova"}'
+salt-run state.orch orch.generate pillar='{"type":"neutron"}'
+salt-run state.orch orch.generate pillar='{"type":"network"}'
+
 ----
 
 ==== Phase 4
