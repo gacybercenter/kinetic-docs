@@ -206,7 +206,7 @@ salt-run state.orch orch.generate pillar='{"type":"storage"}'
 
 [,bash]
 ----
-# Dependincies Copleted in Prior Phases
+# Dependincies Completed in Prior Phases
 salt-run state.orch orch.generate pillar='{"type":"glance"}'
 salt-run state.orch orch.generate pillar='{"type":"horizon"}'
 salt-run state.orch orch.generate pillar='{"type":"guacamole"}'
@@ -222,6 +222,8 @@ salt-run state.orch orch.generate pillar='{"type":"volume"}'
 # Dependancy Order Group
 salt-run state.orch orch.generate pillar='{"type":"placement"}'
 salt-run state.orch orch.generate pillar='{"type":"nova"}'
+
+# Dependancy Order Group
 salt-run state.orch orch.generate pillar='{"type":"neutron"}'
 salt-run state.orch orch.generate pillar='{"type":"network"}'
 
@@ -240,6 +242,7 @@ The following services are optional integrated services that can be used within 
 
 [,bash]
 ----
+salt-run state.orch orch.generate pillar='{"type":"sahara"}'
 salt-run state.orch orch.generate pillar='{"type":"barbican"}'
 salt-run state.orch orch.generate pillar='{"type":"magnum"}'
 salt-run state.orch orch.generate pillar='{"type":"share"}'
