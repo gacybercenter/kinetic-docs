@@ -69,7 +69,7 @@ NOTE: If not rebuilding storage, you will only need to destroy Ceph pools
 
 
 .Destroying Ceph Pools
-[%collapsible]
+[%collapsible%open]
 ====
 
 [,bash]
@@ -164,12 +164,14 @@ NOTE: If rebuilding CEPH, the cephmon nodes need to be rebuilt during this phase
 salt-run state.orch orch.generate pillar='{"type":"cephmon"}'
 ----
 
-IMPORTANT: If using network-ovn as the network backend, the ovsdb node needs to be created, otherwise disregard.
-
+.If using network-ovn as the network backend, the ovsdb node needs to be created
+[%collapsible%open]
+====
 [,bash]
 ----
 salt-run state.orch orch.generate pillar='{"type":"ovsdb"}'
 ----
+====
 
 [,bash]
 ----
@@ -222,12 +224,27 @@ salt-run state.orch orch.generate pillar='{"type":"volume"}'
 # Dependancy Order Group
 salt-run state.orch orch.generate pillar='{"type":"placement"}'
 salt-run state.orch orch.generate pillar='{"type":"nova"}'
+----
 
+.If using network-ovn as the network backend
+[%collapsible%open]
+====
+[,bash]
+----
+salt-run state.orch orch.generate pillar='{"type":"neutron"}'
+----
+====
+
+.If using openvswitch as the network backend
+[%collapsible]
+====
+[,bash]
+----
 # Dependancy Order Group
 salt-run state.orch orch.generate pillar='{"type":"neutron"}'
 salt-run state.orch orch.generate pillar='{"type":"network"}'
-
 ----
+====
 
 ==== Phase 4
 

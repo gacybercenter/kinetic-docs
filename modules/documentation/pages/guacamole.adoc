@@ -1,3 +1,0 @@
-= Apache Guacamole
-
-NOTE: Coming Soon...
