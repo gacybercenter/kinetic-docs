@@ -2,7 +2,9 @@
 
 NOTE: Coming Soon...
 
-== Modules and Processes
+==  Modules and Processes
+
+image::../assets/images/simple_orch.png[]
 
 === orch/init.sls
 To start the provisioning process, any previously created services must be removed. Within the init stage, enabled services are powered off and their keys are deleted. Then, a salt runner is created for every endpoint type. These runners will be utilized during the provisioning process. After the runners have been created, each service type is sent to the "waiting room" by calling *orch/waiting_room.sls*. 
@@ -59,36 +61,35 @@ orch/states/virtualprep.sls
 
 === orch/provision
 
-This state was called by *orch/generate.sls* _after_ *orch/zeroize.sls* is completed. This state starts by importing the following modules. After each of them have been run, the endpoint will be successfully orchestrated.
+This state was called by *orch/generate.sls* _after_ *orch/zeroize.sls* is completed. This state starts by importing the following modules. After each of them have been run, the endpoint will be successfully orchestrated. It is important to note that they are called in this order and each one requires the previous. 
 
 
 .formulas/common/macros/orchestration.sls
 [%collapsible%open]
 ====
-This macro is used to construct needs-check routines. It will loop back until all networking dependancies have been met.
+This macro is used to construct needs-check routines. It will loop back until all networking dependancies have been met. This uses the same *needs.py* module used in *waiting_room.sls*. This macro calls *needs.check_one*, which checks if dependencies are met for a specific type or phase.  
 ====
 
 .formulas/common/base.sls
 [%collapsible%open]
 ====
-
+This module configures various settings on each endpoint based on its type, role, and operating system. First, the system time settings are set, SSH keys are managed, and Rsyslog is configured. 
 ====
 
 .formulas/common/networking.sls
 [%collapsible%open]
 ====
-
+This module is designed to configure and manage network interfaces for each endpoint. It provides configuration for all relevant types of interfaces: regular, bonded, bridged, and bonded & bridged. After installing Python3 and Pyroute2, this module ensures that only needed services are enabled. To create a brdige interface, the module creates a .netdev file making the bridged interface object. It then creates a .network file associating the physical interface with the bridged interface object. 
 ====
 
 .formulas/{{ role }}/install.sls
 [%collapsible%open]
 ====
-
+There is a specific *install.sls* module for each endpoint type. This module is used to install software packages and Python libraries based on what the endpoint needs.
 ====
-
 
 .formulas/{{ role }}//configure.sls
 [%collapsible%open]
 ====
-
+Similarly to the *install.sls* module, there is also a specific *configure.sls* module for each endpoint type. This module is used to configure the previously installed packages and libraries. 
 ====
