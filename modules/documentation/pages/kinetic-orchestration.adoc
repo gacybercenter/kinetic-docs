@@ -140,7 +140,7 @@ This module is designed to configure and manage network interfaces for each
 endpoint. It provides configuration for all relevant types of interfaces:
 regular, bonded, bridged, and bonded & bridged. After installing Python3 and
 Pyroute2, this module ensures that only needed services are enabled. To create
-a brdige interface, the module creates a .netdev file making the bridged
+a bridge interface, the module creates a .netdev file making the bridged
 interface object. It then creates a .network file associating the physical
 interface with the bridged interface object. 
 ====
