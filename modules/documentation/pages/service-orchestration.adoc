@@ -62,8 +62,10 @@ IMPORTANT: If rebuilding Ceph, this will power off all of the
 
 [,bash]
 ----
+salt 'controller*' state.apply /orch/states/virtual_zero pillar='{"type":"cephmon"}'; salt-key -d cephmon* -y
+
 salt 'storage*' system.poweroff
-salt-key -d storage* -y
+salt-key -d 'storage*' -y
 ----
 
 
@@ -85,10 +87,10 @@ NOTE: This will power off all of the physical compute and container
 [,bash]
 ----
 salt 'compute*' system.poweroff
-salt-key -d compute* -y
+salt-key -d 'compute*' -y
 
 salt 'container*' system.poweroff
-salt-key -d container* -y
+salt-key -d 'container*' -y
 ----
 
 
@@ -111,7 +113,8 @@ salt master:
 ----
 #!/bin/bash
 # clear any cached assignments for physical pxe boots
-salt pxe* cmd.run 'rm /var/www/html/assignments/*'
+salt pxe* cmd.run 'rm -f /var/www/html/assignments/*'
+salt pxe* cmd.run 'rm -rf /srv/tftp/assignments/*'
 rm -rf /var/cache/salt/master/*
 
 # These system restarts will ensure that Salt pulls up-to-data code
