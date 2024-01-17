@@ -1,6 +1,11 @@
 = Kinetic Orchestration
 :imagesdir: ../assets/images
 
+== Architecture Overview
+image::kinetic.png[]
+
+
+==  Orchestration Overview
 This outlines the overall *Orchestration* philosophy that the the
 Kinetic Framework was designed to follow. In order to allow for rapid
 recovery in cases of compromise to Confidentiality, Integrity, and
@@ -8,8 +13,6 @@ Availability (CIA), the Kinetic Framework was designed to be as
 modular as possible. This allows for the system to be easily
 reconfigured and redeployed to support integrations of a variety of
 services.
-
-==  General Orchestration Flow
 
 image::simple_orch.png[]
 
